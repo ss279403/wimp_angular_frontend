@@ -1,20 +1,132 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="container">
+    <h1 class="col-sm-offset-2">Add Movie</h1>
+    <form class="form-horizontal" (ngSubmit)="onSubmitMovie(movieForm)" #movieForm="ngForm">
+    <div class="form-group">
+      <label for="title" class="col-sm-4 control-label">Movie Title</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #title="ngModel" name="title" class="form-control" id="title">
+      </div>
+    </div>
 
+    <div class="form-group">
+      <label for="releaseDate" class="col-sm-4 control-label">Release Date</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #releaseDate="ngModel" name="releaseDate" class="form-control" id="releaseDate">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="budget" class="col-sm-4 control-label">Budget</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #budget="ngModel" name="budget" class="form-control" id="budget">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="distributor" class="col-sm-4 control-label">Distributor</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #distributor="ngModel" name="distributor" class="form-control" id="distributor">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <button type="submit" class="btn btn-primary">Submit Form</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<br>
+
+
+<div class="container">
+  <div class="col-sm-offset-2 col-sm-9">
+    <div class="panel panel-default">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Movie Title</th>
+            <th>Release Year</th>
+            <th>Budget</th>
+            <th>Distirbutor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movie of movies">
+            <th>{{movie.title}}</th>
+            <th>{{movie.releaseDate}}</th>
+            <th>{{movie.budget}}</th>
+            <th>{{movie.distributor}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+  <h1 class="col-sm-offset-2">Add Actor</h1>
+  <form class="form-horizontal" (ngSubmit)="onSubmitActor(actorForm)" #actorForm="ngForm">
+    <div class="form-group">
+      <label for="firstName" class="col-sm-4 control-label">First Name</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #firstName="ngModel" name="firstName" class="form-control" id="firstName">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName" class="col-sm-4 control-label">Last Name</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #lastName="ngModel" name="lastName" class="form-control" id="lastName">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="activeSinceYear" class="col-sm-4 control-label">Acting Since</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #activeSinceYear="ngModel" name="activeSinceYear" class="form-control" id="activeSinceYear">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="birthDate" class="col-sm-4 control-label">Birth Year</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #birthDate="ngModel" name="birthDate" class="form-control" id="birthDate">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <button type="submit" class="btn btn-primary">Submit Form</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<br>
+
+<div class="container">
+  <div class="col-sm-offset-2 col-sm-9">
+    <div class="panel panel-default">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Actor</th>
+            <th>Acting Since</th>
+            <th>Year Born</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let actor of actors">
+            <th>{{actor.firstName}} {{actor.lastName}}</th>
+            <th>{{actor.activeSinceYear}}</th>
+            <th>{{actor.birthDate}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

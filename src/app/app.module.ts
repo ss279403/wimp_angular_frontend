@@ -6,10 +6,14 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { WimpService } from './wimp.service';
+import { AddMovieComponent } from './add-movie/add-movie.component';
+import { AddActorComponent } from './add-actor/add-actor.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddMovieComponent,
+    AddActorComponent
   ],
   imports: [
     BrowserModule,

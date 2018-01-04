@@ -1,0 +1,115 @@
+<div class="container">
+  <h1 class="col-sm-offset-2">Add Actor</h1>
+  <form class="form-horizontal" (ngSubmit)="onSubmitActor(actorForm)" #actorForm="ngForm">
+    <div class="form-group">
+      <label for="firstName" class="col-sm-4 control-label">First Name</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #firstName="ngModel" name="firstName" class="form-control" id="firstName">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName" class="col-sm-4 control-label">Last Name</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #lastName="ngModel" name="lastName" class="form-control" id="lastName">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="activeSinceYear" class="col-sm-4 control-label">Acting Since</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #activeSinceYear="ngModel" name="activeSinceYear" class="form-control" id="activeSinceYear">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="birthDate" class="col-sm-4 control-label">Birth Year</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #birthDate="ngModel" name="birthDate" class="form-control" id="birthDate">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <button type="submit" class="btn btn-primary">Submit Form</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<br>
+
+<div class="container">
+  <div *ngIf="!showUpdateTable">
+    <div class="col-sm-offset-2 col-sm-9">
+      <div class="panel panel-default">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Actor</th>
+              <th>Acting Since</th>
+              <th>Year Born</th>
+              <th>
+                <button (click)="ShowButton()" class="btn btn-primary">Edit Info</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let actor of actors">
+              <td>{{actor.firstName}} {{actor.lastName}}</td>
+              <td>{{actor.activeSinceYear}}</td>
+              <td>{{actor.birthDate}}</td>
+              <td>
+                <button (click)="removeActor(actor.id)" class="btn btn-primary">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div *ngIf="showUpdateTable">
+    <form class="form-horizontal" #actorForm="ngForm">
+      <div class="container">
+        <div class="col-sm-offset-2 col-sm-9">
+          <div class="panel panel-default">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Acting Since</th>
+                  <th>Year Born</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let actor of actors">
+                  <td>
+                    <input type="text" ngModel #firstName="ngModel" name="firstName" class="form-control" id="firstName" placeholder="{{actor.firstName}}"
+                      required>
+                  </td>
+                  <td>
+                    <input type="text" ngModel #lastName="ngModel" name="lastName" class="form-control" id="lastName" placeholder="{{actor.lastName}}">
+                  </td>
+                  <td>
+                    <input type="text" ngModel #activeSinceYear="ngModel" name="activeSinceYear" class="form-control" id="activeSinceYear"
+                      placeholder="{{actor.activeSinceYear}}">
+                  </td>
+                  <td>
+                    <input type="text" ngModel #birthDate="ngModel" name="birthDate" class="form-control" id="birthDate" placeholder="{{actor.birthDate}}">
+                  </td>
+                  <td>
+                    <button (click)="updateActor(actorForm, actor.id)" class="btn btn-primary">Update</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

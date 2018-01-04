@@ -1,0 +1,112 @@
+<div class="container">
+    <h1 class="col-sm-offset-2">Add Movie</h1>
+    <form class="form-horizontal" (ngSubmit)="onSubmitMovie(movieForm)" #movieForm="ngForm">
+    <div class="form-group">
+
+      <label for="title" class="col-sm-4 control-label">Movie Title</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #title="ngModel" name="title" class="form-control" id="title">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="releaseDate" class="col-sm-4 control-label">Release Date</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #releaseDate="ngModel" name="releaseDate" class="form-control" id="releaseDate">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="budget" class="col-sm-4 control-label">Budget</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #budget="ngModel" name="budget" class="form-control" id="budget">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="distributor" class="col-sm-4 control-label">Distributor</label>
+      <div class="col-sm-6">
+        <input type="text" ngModel #distributor="ngModel" name="distributor" class="form-control" id="distributor">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-10">
+        <button type="submit" class="btn btn-primary">Submit Form</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<br>
+
+
+<div class="container">
+<div *ngIf="!showUpdateTable">
+  <div class="col-sm-offset-2 col-sm-9">
+    <div class="panel panel-default">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Movie Title</th>
+            <th>Release Year</th>
+            <th>Budget</th>
+            <th>Distirbutor</th>
+            <th><button (click)="ShowButton()" class="btn btn-primary">Edit Info</button></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movie of movies">
+            <td>{{movie.title}}</td>
+            <td>{{movie.releaseDate | date}}</td>
+            <td>{{movie.budget | currency}}</td>
+            <td>{{movie.distributor}}</td>
+            <td><button (click)="removeMovie(movie.id)" class="btn btn-primary">Remove</button> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<div>
+    <div *ngIf="showUpdateTable">
+      <form class="form-horizontal" #movieForm="ngForm">
+        <div class="container">
+          <div class="col-sm-offset-2 col-sm-9">
+            <div class="panel panel-default">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                      <th>Movie Title</th>
+                      <th>Release Year</th>
+                      <th>Budget</th>
+                      <th>Distirbutor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let movie of movies">
+                    <td>
+                        <input type="text" ngModel #title="ngModel" name="title" class="form-control" id="title" placeholder="{{movie.title}}">
+                    </td>
+                    <td>
+                        <input type="text" ngModel #releaseDate="ngModel" name="releaseDate" class="form-control" id="releaseDate" placeholder="{{movie.releaseDate | date}}">
+                    </td>
+                    <td>
+                        <input type="text" ngModel #budget="ngModel" name="budget" class="form-control" id="budget" placeholder="{{movie.budget | currency}}">
+                    </td>
+                    <td>
+                        <input type="text" ngModel #distributor="ngModel" name="distributor" class="form-control" id="distributor" placeholder="{{movie.distributor}}">
+                    <td>
+                      <button (click)="updateMovie(movieForm, movie.id)" class="btn btn-primary">Update</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
